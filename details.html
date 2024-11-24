@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FFD6E5;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .logo {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .name {
+            font-size: 5rem;
+            line-height: 0.9;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            -webkit-text-stroke: 2px #000;
+            text-stroke: 2px #000;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .first-name {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: normal;
+            -webkit-text-stroke: 1px #000;
+            text-stroke: 1px #000;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #000;
+            margin-top: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: slideUp 1.5s ease-out;
+        }
+
+        .ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            animation: fadeIn 2s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learn-more:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .learn-more::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: buttonShine 3s infinite;
+        }
+
+        /* Custom Shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,182,193,0.3);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,192,203,0.3);
+            transform: rotate(45deg);
+            animation: rotate 10s infinite linear;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid rgba(255,182,193,0.3);
+            animation: bounce 4s infinite ease-in-out;
+        }
+
+        /* Shape Positions */
+        .shape1 { top: 10%; left: 10%; }
+        .shape2 { top: 20%; right: 15%; }
+        .shape3 { bottom: 15%; left: 20%; }
+        .shape4 { bottom: 20%; right: 10%; }
+
+        /* Star with glow */
+        .star {
+            position: absolute;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        .star-1 { top: 15%; left: 20%; }
+        .star-2 { top: 25%; right: 25%; }
+        .star-3 { bottom: 30%; left: 15%; }
+        .star-4 { bottom: 20%; right: 20%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes buttonShine {
+            0% { transform: translateX(-200%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cartoon elements */
+        .cartoon-star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            animation: cartoonFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes cartoonFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, -5px) rotate(10deg); }
+            50% { transform: translate(0, -10px) rotate(0deg); }
+            75% { transform: translate(-5px, -5px) rotate(-10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Shapes -->
+    <div class="shape circle shape1"></div>
+    <div class="shape square shape2"></div>
+    <div class="shape triangle shape3"></div>
+    <div class="shape circle shape4"></div>
+
+    <!-- Stars decoration -->
+    <svg class="star star-1" width="20" height="20" viewBox="0 0 20 20">
+        <path fill="#FFB6C1" d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8z"/>
+    </svg>
+    <svg class="star star-2" width="20" height="20" viewBox="0 0 20 20">
+        <path fill="#FFB6C1" d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8z"/>
+    </svg>
+    <svg class="star star-3" width="20" height="20" viewBox="0 0 20 20">
+        <path fill="#FFB6C1" d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8z"/>
+    </svg>
+    <svg class="star star-4" width="20" height="20" viewBox="0 0 20 20">
+        <path fill="#FFB6C1" d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8z"/>
+    </svg>
+
+    <!-- Cartoon Stars -->
+    <svg class="cartoon-star" style="top: 5%; left: 5%;" viewBox="0 0 20 20">
+        <path fill="#FFD700" d="M10 0 L13 7 L20 7 L15 12 L17 20 L10 15 L3 20 L5 12 L0 7 L7 7 Z"/>
+    </svg>
+    <svg class="cartoon-star" style="top: 8%; right: 8%;" viewBox="0 0 20 20">
+        <path fill="#FFD700" d="M10 0 L13 7 L20 7 L15 12 L17 20 L10 15 L3 20 L5 12 L0 7 L7 7 Z"/>
+    </svg>
+
+    <div class="container">
+        <div class="logo">
+            <h1 class="name">
+                <span class="first-name">Abijith</span><br>
+                A S
+            </h1>
+            <div class="title">UI/UX Designer <span class="ampersand">&</span> Programmer</div>
+        </div>
+        <a href="#" class="learn-more">GO TO MAIN WBESITE</a>
+    </div>
+
+    <script>
+        // Enhanced star animations
+        const stars = document.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            star.style.animation = `twinkle ${2 + index * 0.5}s ease-in-out infinite`;
+        });
+
+        // Enhanced floating animation for the logo
+        const logo = document.querySelector('.logo');
+        let float = 0;
+        function animate() {
+            float += 0.02;
+            logo.style.transform = `translateY(${Math.sin(float) * 5}px) rotate(${Math.sin(float) * 0.5}deg)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Add random movement to cartoon stars
+        const cartoonStars = document.querySelectorAll('.cartoon-star');
+        cartoonStars.forEach((star) => {
+            let x = 0;
+            let y = 0;
+            function movestar() {
+                x += 0.03;
+                y += 0.04;
+                star.style.transform = `translate(${Math.sin(x) * 10}px, ${Math.cos(y) * 10}px) rotate(${Math.sin(x) * 10}deg)`;
+                requestAnimationFrame(movestar);
+            }
+            movestar();
+        });
+    </script>
+</body>
+</html>
